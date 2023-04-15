@@ -1,5 +1,6 @@
 import { Router } from "express";
 import controller from "../controllers/products.js";
+import checkPermissions from "../middlewares/permissions.js";
 
 const router = Router();
 
@@ -7,12 +8,12 @@ const router = Router();
 router.get('/' , controller.getAll)
 
 //Crea un producto
-router.post('/' , controller.saveProduct)
+router.post('/' ,checkPermissions("create"), controller.saveProduct)
 
 //Actualiza un producto
-router.put('/:pid' , controller.updateProduct)
+router.put('/:pid' ,checkPermissions("update"),controller.updateProduct)
 
 //Elimina un producto
-router.delete('/:pid' , controller.deleteProduct)
+router.delete('/:pid' ,checkPermissions("delete"), controller.deleteProduct)
 
 export default router;

@@ -1,4 +1,5 @@
 import passport from "passport";
+import config from "../config/config";
 
 //Registrarse
 const register = async () => {
@@ -19,17 +20,7 @@ const login = async () => {
     passport.authenticate('login', { failureRedirect: '/faillogin' }), async (req, res) => {
         const { email, password } = req.body;
 
-        if (email == "adminCoder@coder.com" && password == "adminCod3r123") {
-            req.session.user = {
-                id: "adminCoder",
-                first_name: "Coder",
-                last_name: "Admin",
-                email: email,
-                rol: "admin",
-            };
-            return res.send({ status: "success", message: "logueado" });
-        }
-
+        
         if (!req.user) return res.status(400).send({ status: "error", error: "Contraseña invalida" });
 
         req.session.user = {
@@ -38,8 +29,10 @@ const login = async () => {
             last_name: req.user.last_name,
             age: req.user.age,
             email: req.user.email,
-            rol: req.user.rol
+            rol: req.user.rol,
         }
+
+        console.log(req.session.user);
 
         res.send({ status: "success", payload: req.user });
     }

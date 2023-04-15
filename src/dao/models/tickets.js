@@ -9,7 +9,7 @@ const schema = new mongoose.Schema({
         unique: true
     },
     purchase_datetime: {
-        type: Date,
+        type: String,
         require: true
     },
     amount: {

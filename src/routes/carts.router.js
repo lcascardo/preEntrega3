@@ -1,5 +1,6 @@
 import { Router } from "express";
 import controller from "../controllers/carts.js";
+import checkPermissions from "../middlewares/permissions.js";
 
 const router = Router();
 //Trae todos los carritos

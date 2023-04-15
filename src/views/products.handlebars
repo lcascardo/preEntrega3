@@ -21,5 +21,32 @@
 <a href="/products?page={{nextPage}}"><button>Siguiente</button></a>
 {{/if}}
 
+{{#if isLogin}}
+<h2>Crear Producto</h2>
+<form method="POST" action="http://localhost:8080/api/products">
+    <label for="title">Titulo</label>
+    <input type="text" name="title" id="title">
+
+    <label for="description">Descripcion</label>
+    <input type="text" name="description" id="description">
+
+    <label for="price">Precio</label>
+    <input type="number" name="price" id="price">
+
+    <label for="code">Codigo</label>
+    <input type="text" name="code" id="code">
+
+    <label for="quantity">Cantidad</label>
+    <input type="number" name="quantity" id="quantity">
+
+    <label for="thumbnail">Url de imagen</label>
+    <input type="text" name="thumbnail" id="thumbnail">
+
+    <label for="category">Categoria</label>
+    <input type="text" name="category" id="category">
+    <button type="submit">Enviar</button>
+</form>
+{{/if}}
+
 <script src="/js/logout.js"></script>
 <script src="/js/products.js"></script>

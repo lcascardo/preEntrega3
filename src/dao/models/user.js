@@ -28,7 +28,7 @@ const schema = new mongoose.Schema({
         ref: 'carts',
         default: null
     },
-    role: {
+    rol: {
         type: String,
         enum: ["user", "admin"],
         default: 'user'
